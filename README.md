@@ -1,4 +1,4 @@
-# flutter_application_lbarq
+# flutter_application_barq
 
 A new Flutter project.
 
