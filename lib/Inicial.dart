@@ -2,16 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_login/BebidasAlcoolicas.dart';
 import 'package:flutter_application_login/CarrinhoDeCompras.dart';
 import 'package:flutter_application_login/VerOfertas.dart';
+import 'package:provider/provider.dart';
+import 'MyBottomNavigationBar.dart';
 
 class Inicial extends StatefulWidget {
-  const Inicial({super.key});
+  const Inicial({Key? key}) : super(key: key);
 
   @override
   State<Inicial> createState() => _MyStatefulWidgetState();
 }
 
 class _MyStatefulWidgetState extends State<Inicial> {
+  // bottom navigation
   int _currentIndex = 0;
+
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +29,7 @@ class _MyStatefulWidgetState extends State<Inicial> {
         backgroundColor: Color(0xFF00265F),
         centerTitle: true,
         title: Text("BARQ"),
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -28,6 +39,10 @@ class _MyStatefulWidgetState extends State<Inicial> {
             },
           ),
         ],
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTap,
       ),
       body: Center(
         child: Column(
@@ -268,32 +283,6 @@ class _MyStatefulWidgetState extends State<Inicial> {
             ),
           ],
         ),
-      ),
-      // MENU INFERIOR
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        backgroundColor: Color(0xFF00265F),
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.blueAccent,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help),
-            label: 'Solicitar Garçom',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.logout_outlined),
-            label: 'Sair',
-          ),
-        ],
       ),
     );
   }
