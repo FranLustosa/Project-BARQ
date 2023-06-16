@@ -52,49 +52,50 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // ADICIONAR POSINTEND
-
-                      SizedBox(
-                        width: 200,
-                        height: 50,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Color(0xffffffff),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x3f000000),
-                                offset: Offset(0, 4),
-                                blurRadius: 2,
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              IconButton(
-                                icon: Icon(Icons.remove),
-                                onPressed: () {
-                                  setState(() {
-                                    if (_quantity > 0) {
-                                      _quantity--;
-                                    }
-                                  });
-                                },
-                              ),
-                              Text(
-                                '$_quantity',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.add),
-                                onPressed: () {
-                                  setState(() {
-                                    _quantity++;
-                                  });
-                                },
-                              ),
-                            ],
+                      Positioned(
+                        top: 100, // Defina a posição vertical desejada
+                        child: SizedBox(
+                          width: 200,
+                          height: 50,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Color(0xffffffff),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x3f000000),
+                                  offset: Offset(0, 4),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                IconButton(
+                                  icon: Icon(Icons.remove),
+                                  onPressed: () {
+                                    setState(() {
+                                      if (_quantity > 0) {
+                                        _quantity--;
+                                      }
+                                    });
+                                  },
+                                ),
+                                Text(
+                                  '$_quantity',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.add),
+                                  onPressed: () {
+                                    setState(() {
+                                      _quantity++;
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -104,7 +105,50 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            // Lógica para adicionar ao carrinho
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text(
+                                      'Adicionado ao carrinho com sucesso!'),
+                                  actions: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        // Lógica para adicionar ao carrinho
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Adicionar ao carrinho'),
+                                      style: ElevatedButton.styleFrom(
+                                        fixedSize: Size(250, 40),
+                                        backgroundColor: Color(0xFF00265F),
+                                        primary: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 16),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Continuar comprando'),
+                                      style: ElevatedButton.styleFrom(
+                                        fixedSize: Size(250, 40),
+                                        backgroundColor: Colors.white,
+                                        primary: Color(0xFF00265F),
+                                        onPrimary: Color(0xFF00265F),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             fixedSize: Size(370, 62),
