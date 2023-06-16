@@ -1,3 +1,5 @@
+// --- PÁGINA QUE VISUALIZO A MINHA HOME, COM TODAS AS OPÇÕES PRO USUÁRIO NAVEGAR --- //
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_login/BebidasAlcoolicas.dart';
 import 'package:flutter_application_login/CarrinhoDeCompras.dart';

@@ -1,14 +1,17 @@
+// --- PÁGINA DE VISUALIZAR BEBIDA E ADICIONAR AO CARRINHO --- //
+
 import 'package:flutter/material.dart';
 
 class VisualizandoBebida extends StatefulWidget {
-  const VisualizandoBebida({super.key});
+  const VisualizandoBebida({Key? key}) : super(key: key);
 
   @override
-  State<VisualizandoBebida> createState() => _MyStatefulWidgetState();
+  State<VisualizandoBebida> createState() => _VisualizandoBebidaState();
 }
 
-class _MyStatefulWidgetState extends State<VisualizandoBebida> {
+class _VisualizandoBebidaState extends State<VisualizandoBebida> {
   int _currentIndex = 0;
+  int _quantity = 0; // Variável para controlar a quantidade
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +49,83 @@ class _MyStatefulWidgetState extends State<VisualizandoBebida> {
                       topRight: Radius.circular(30),
                     ),
                   ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // ADICIONAR POSINTEND
+
+                      SizedBox(
+                        width: 200,
+                        height: 50,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Color(0xffffffff),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x3f000000),
+                                offset: Offset(0, 4),
+                                blurRadius: 2,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.remove),
+                                onPressed: () {
+                                  setState(() {
+                                    if (_quantity > 0) {
+                                      _quantity--;
+                                    }
+                                  });
+                                },
+                              ),
+                              Text(
+                                '$_quantity',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add),
+                                onPressed: () {
+                                  setState(() {
+                                    _quantity++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      SizedBox(
+                        width: 300,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Lógica para adicionar ao carrinho
+                          },
+                          style: ElevatedButton.styleFrom(
+                            fixedSize: Size(370, 62),
+                            backgroundColor: Color(0xFF00265F),
+                            primary: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
+                          child: Text('Adicionar ao carrinho'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
           Positioned(
             left: 50,
-            top: 10,
+            top: 8,
             child: Align(
               child: SizedBox(
                 width: 300,
@@ -63,54 +136,6 @@ class _MyStatefulWidgetState extends State<VisualizandoBebida> {
                 ),
               ),
             ),
-          ),
-          Positioned(
-            child: Align(
-              child: SizedBox(
-                width: 200,
-                height: 50,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Color(0xffffffff),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3f000000),
-                        offset: Offset(0, 4),
-                        blurRadius: 2,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-
-      // MENU INFERIOR
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        backgroundColor: Color(0xFF00265F),
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.blueAccent,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help),
-            label: 'Solicitar Garçom',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.logout_outlined),
-            label: 'Sair',
           ),
         ],
       ),

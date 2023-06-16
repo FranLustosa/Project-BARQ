@@ -1,3 +1,5 @@
+// --- PÁGINA QUE VISUALIZO OS MEUS PRODUTOS ADICIONADO AO CARRINHO DE COMPRAS E REALIZO O ENVIO DO PEDIDO --- //
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';

@@ -1,3 +1,6 @@
+// --- PÁGINA QUE LISTA OS MEUS PRODUTOS --- //
+// --- INTERLIGADA A PÁGINA DE BEBIDA ALCOOLICAS, OU SEJA, ELA É CHAMADA NESSA CLASSE E REALIZA O RETORNO --- //
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_login/VisualizandoBebida.dart';
 
@@ -59,8 +62,7 @@ class BebidasListView extends StatelessWidget {
                   ],
                 ),
                 width: 350,
-                height:
-                    90, // Altura do container do item (ajuste conforme necessário)
+                height: 90,
                 decoration: BoxDecoration(
                   color: Color(0xFF00265F).withOpacity(0.10),
                   borderRadius: BorderRadius.circular(10),
@@ -72,7 +74,7 @@ class BebidasListView extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 15), // Espaço entre os itens
+            SizedBox(height: 15),
           ],
         );
       },

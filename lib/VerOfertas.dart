@@ -1,3 +1,6 @@
+// --- PÁGINA QUE VISUALIZO OS MEUS PRODUTOS, OU SEJA, VEJO A LISTA COM OS PRODUTOS --- //
+// --- INTERLIGADA A PÁGINA DE OFERTAS LIST VIEW --- //
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_login/CarrinhoDeCompras.dart';
 import 'package:flutter_application_login/VisualizandoBebida.dart';
@@ -129,31 +132,6 @@ class _MyStatefulWidgetState extends State<VerOfertas> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        backgroundColor: Color(0xFF00265F),
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.blueAccent,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help),
-            label: 'Solicitar Garçom',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.logout_outlined),
-            label: 'Sair',
-          ),
-        ],
       ),
     );
   }

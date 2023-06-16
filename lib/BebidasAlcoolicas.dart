@@ -1,3 +1,6 @@
+// --- PÁGINA QUE VISUALIZO OS MEUS PRODUTOS, OU SEJA, VEJO A LISTA COM OS PRODUTOS --- //
+// --- INTERLIGADA A PÁGINA DE BEBIDA LIST VIEW --- //
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_login/CarrinhoDeCompras.dart';
 import 'package:flutter_application_login/VisualizandoBebida.dart';

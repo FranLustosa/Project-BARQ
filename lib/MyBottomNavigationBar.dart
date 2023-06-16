@@ -1,4 +1,8 @@
+// --- PÁGINA DOS MEUS BOTÕES DE NAVEGAÇÃO INFERIOR, É CHAMADO PELA AS OUTRAS CLASSES --- //
+// --- INTERLIGADA A TODAS AS PÁGINAS QUE É CHAMADO --- //
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_login/AdicionadoAoCarrinho.dart';
 import 'package:flutter_application_login/BebidasAlcoolicas.dart';
 import 'package:flutter_application_login/Login.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +46,7 @@ class MyBottomNavigationBar extends StatelessWidget {
             },
           );
         } else if (index == 2) {
-          // Navegar para a página de login (ou qualquer outra ação de logout que você precise) apenas quando for clicado
+          // Navegar para a página de login
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => Login()),

@@ -1,3 +1,5 @@
+// --- PÁGINA QUE VISUALIZO APÓS LE O QRCODE --- //
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_login/Inicial.dart';
 
