@@ -2,11 +2,56 @@
 // --- INTERLIGADA A PÁGINA DE BEBIDA ALCOOLICAS, OU SEJA, ELA É CHAMADA NESSA CLASSE E REALIZA O RETORNO --- //
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_login/BebidasAlcoolicas.dart';
 import 'package:flutter_application_login/VisualizandoBebida.dart';
+import 'package:flutter_application_login/VisualizandoBebidaNaoAlcoolica.dart';
 
-class BebidasListView extends StatelessWidget {
-  const BebidasListView({Key? key}) : super(key: key);
+import 'CarrinhoDeCompras.dart';
+import 'MyBottomNavigationBar.dart';
 
+class BebidasNaoAlcoolicas extends StatefulWidget {
+  @override
+  _PetiscosState createState() => _PetiscosState();
+}
+
+class _PetiscosState extends State<BebidasNaoAlcoolicas> {
+  // bottom navigation
+  int _currentIndex = 0;
+
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF00265F),
+        centerTitle: true,
+        title: Text("BARQ"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => CarrinhoDeCompras()),
+              );
+            },
+          ),
+        ],
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTap,
+      ),
+      body: BebidasNaoAlcoolicasListView(),
+    );
+  }
+}
+
+class BebidasNaoAlcoolicasListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -20,7 +65,7 @@ class BebidasListView extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => VisualizandoBebida(),
+                    builder: (context) => VisualizandoBebidaNaoAlcoolica(),
                   ),
                 );
               },
@@ -30,7 +75,7 @@ class BebidasListView extends StatelessWidget {
                 child: Stack(
                   children: [
                     Text(
-                      "   Cerveja Spaten 350ml\n   \n\n",
+                      "   Drink de Morango\n   \n\n",
                       style: TextStyle(
                         color: Color(0xFF00265F),
                         fontSize: 15,
@@ -68,7 +113,7 @@ class BebidasListView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
                     alignment: Alignment(1, 0),
-                    image: AssetImage("assets/images/card${index + 6}.png"),
+                    image: AssetImage("assets/images/card${17}.png"),
                     fit: BoxFit.fitHeight,
                   ),
                 ),
