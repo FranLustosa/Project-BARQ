@@ -58,7 +58,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                     ),
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Positioned(
                         top: 300,
@@ -165,6 +165,8 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                               },
                             );
                           },
+                          // modificando o buttom
+
                           style: ElevatedButton.styleFrom(
                             fixedSize: Size(370, 62),
                             backgroundColor: Color(0xFF00265F),
@@ -198,7 +200,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
           ),
           Positioned(
             left: 37,
-            top: 320,
+            top: 370,
             child: Align(
               child: SizedBox(
                 width: 222,
@@ -206,7 +208,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                 child: Text(
                   'Cerveja Heineken 600ml',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                     height: 1.5599022865,
                     letterSpacing: -0.6,
@@ -218,7 +220,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
           ),
           Positioned(
             left: 37,
-            top: 350,
+            top: 410,
             child: Align(
               child: SizedBox(
                 width: 328,
@@ -238,7 +240,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
           ),
           Positioned(
             left: 250,
-            top: 320,
+            top: 370,
             child: Align(
               child: SizedBox(
                 width: 92,
@@ -247,6 +249,26 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Color(0xb200255e),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 250,
+            top: 370,
+            child: Align(
+              child: SizedBox(
+                width: 92,
+                height: 26,
+                child: Text(
+                  '     R\u0024 10,00',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    height: 1.5599023183,
+                    letterSpacing: -0.45,
+                    color: Colors.white,
                   ),
                 ),
               ),

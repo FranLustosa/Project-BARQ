@@ -77,7 +77,7 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
                             ),
                             // CÓDIGO INCREMENTADOR
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
                                   icon: Icon(Icons.remove),
