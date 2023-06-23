@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_login/BebidasAlcoolicas.dart';
 import 'package:flutter_application_login/BebidasNaoAlcoolicas.dart';
 import 'package:flutter_application_login/CarrinhoDeCompras.dart';
+import 'package:flutter_application_login/FigmaToCodeApp.dart';
 import 'package:flutter_application_login/Petiscos.dart';
 import 'package:flutter_application_login/VerOfertas.dart';
 import 'package:provider/provider.dart';
