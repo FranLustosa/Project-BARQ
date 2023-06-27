@@ -9,6 +9,7 @@ import 'package:flutter_application_login/Login.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/rendering.dart';
 import 'CarrinhoDeCompras.dart';
+import 'MyBottomNavigationBar.dart';
 
 class VisualizandoBebida extends StatefulWidget {
   const VisualizandoBebida({Key? key}) : super(key: key);
@@ -20,6 +21,11 @@ class VisualizandoBebida extends StatefulWidget {
 class _VisualizandoBebidaState extends State<VisualizandoBebida> {
   int _currentIndex = 0;
   int _quantity = 0; // Variável para controlar a quantidade
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +40,10 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
             onPressed: () {},
           ),
         ],
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTap,
       ),
       body: Stack(
         children: [

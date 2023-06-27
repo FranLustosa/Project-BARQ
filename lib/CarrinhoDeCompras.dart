@@ -29,105 +29,23 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
           children: [
             Positioned(
               left: 30,
-              top: -450,
+              top: -410,
               child: Text(
                 'Meu carrinho de pedidos',
                 style: TextStyle(
                   color: Color(0xFF00255E),
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                   height: 31.20,
                   letterSpacing: -0.60,
                 ),
               ),
             ),
-            Positioned(
-              left: 30,
-              top: 466,
-              child: Container(
-                width: 370,
-                height: 62,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: Container(
-                        width: 370,
-                        height: 62,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFF00255E),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: 115,
-                      top: 21,
-                      child: Text(
-                        'Finalizar Pedido',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400,
-                          height: 20,
-                          letterSpacing: -0.24,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              left: 30,
-              top: 567,
-              child: Container(
-                width: 370,
-                height: 62,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: Container(
-                        width: 370,
-                        height: 62,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFF4F4F4F),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: 113,
-                      top: 21,
-                      child: Text(
-                        'Cancelar Pedido',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400,
-                          height: 20,
-                          letterSpacing: -0.24,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+
+            //card
             Positioned(
               left: 14,
-              top: 100,
+              top: 70,
               child: Container(
                 width: 350,
                 height: 200,
@@ -140,68 +58,15 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
               ),
             ),
             Positioned(
-              left: 352,
-              top: 360,
-              child: SizedBox(
-                width: 16,
-                height: 21,
-                child: Text(
-                  '+',
-                  style: TextStyle(
-                    color: Color(0xFF00255E),
-                    fontSize: 20,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w700,
-                    height: 31.20,
-                    letterSpacing: -0.60,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 282,
-              top: 359,
-              child: SizedBox(
-                width: 16,
-                height: 21,
-                child: Text(
-                  '-',
-                  style: TextStyle(
-                    color: Color(0xFF00255E),
-                    fontSize: 20,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w700,
-                    height: 31.20,
-                    letterSpacing: -0.60,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 318,
-              top: 361,
-              child: Text(
-                '2',
-                style: TextStyle(
-                  color: Color(0xFF4F4F4F),
-                  fontSize: 20,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w500,
-                  height: 31.20,
-                  letterSpacing: -0.60,
-                ),
-              ),
-            ),
-            Positioned(
               left: 35,
-              top: -200,
+              top: -230,
               child: SizedBox(
                 width: 233,
                 child: Text(
                   '2X Cerveja Spaten 350ml',
                   style: TextStyle(
                     color: Color(0xFF00255E),
-                    fontSize: 20,
+                    fontSize: 15,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
                     height: 31.20,
@@ -212,14 +77,14 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 64,
-              top: 100,
+              top: -100,
               child: SizedBox(
                 width: 63,
                 child: Text(
                   'Excluir',
                   style: TextStyle(
                     color: Color(0xFF4F4F4F),
-                    fontSize: 18,
+                    fontSize: 15,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
                     height: 28.08,
@@ -230,7 +95,7 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 35,
-              top: 277,
+              top: 160,
               child: Container(
                 width: 132,
                 height: 24,
@@ -244,7 +109,7 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 46,
-              top: 282,
+              top: 150,
               child: SizedBox(
                 width: 106,
                 height: 14,
@@ -252,7 +117,7 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
                   'Total R\$ 10,00',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 15,
                     fontStyle: FontStyle.italic,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
@@ -274,10 +139,10 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 268,
-              top: 236,
+              top: 100,
               child: Container(
                 width: 117,
-                height: 106,
+                height: 100,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/card11.png'),
