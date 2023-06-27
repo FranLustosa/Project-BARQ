@@ -2,11 +2,6 @@
 // --- INTERLIGADA A TODAS AS PÁGINAS QUE É CHAMADO --- //
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_login/AdicionadoAoCarrinho.dart';
-import 'package:flutter_application_login/BebidasAlcoolicas.dart';
-import 'package:flutter_application_login/Inicial.dart';
-import 'package:flutter_application_login/Login.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/rendering.dart';
 import 'CarrinhoDeCompras.dart';
 
@@ -147,7 +142,9 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    CarrinhoDeCompras()));
+                                                    CarrinhoDeCompras(
+                                                      itens: [],
+                                                    )));
                                       },
                                       child: Text('Ver carrinho'),
                                       style: ElevatedButton.styleFrom(

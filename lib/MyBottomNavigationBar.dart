@@ -2,10 +2,7 @@
 // --- INTERLIGADA A TODAS AS PÁGINAS QUE É CHAMADO --- //
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_login/AdicionadoAoCarrinho.dart';
-import 'package:flutter_application_login/BebidasAlcoolicas.dart';
 import 'package:flutter_application_login/Login.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/rendering.dart';
 
 class MyBottomNavigationBar extends StatelessWidget {

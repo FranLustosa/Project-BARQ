@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_login/BebidasAlcoolicas.dart';
 import 'package:flutter_application_login/BebidasNaoAlcoolicas.dart';
 import 'package:flutter_application_login/CarrinhoDeCompras.dart';
-import 'package:flutter_application_login/FigmaToCodeApp.dart';
 import 'package:flutter_application_login/Petiscos.dart';
 import 'package:flutter_application_login/VerOfertas.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_application_login/VisualizandoBebida.dart';
 import 'MyBottomNavigationBar.dart';
 
 class Inicial extends StatefulWidget {
@@ -39,8 +38,10 @@ class _MyStatefulWidgetState extends State<Inicial> {
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => CarrinhoDeCompras()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => CarrinhoDeCompras(
+                        itens: [],
+                      )));
             },
           ),
         ],
@@ -232,72 +233,90 @@ class _MyStatefulWidgetState extends State<Inicial> {
             ),
 
             SizedBox(height: 5),
-            Container(
-              alignment: Alignment(-1, 0),
-              child: Stack(
-                children: [
-                  Text(
-                    "   Dobradinha de Chopp\n   15,00 \n\n   Adicionar ao carrinho        ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w300,
+            InkWell(
+              onTap: () {
+                // Navegação para a outra página
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VisualizandoBebida()),
+                );
+              },
+              child: Container(
+                alignment: Alignment(-1, 0),
+                child: Stack(
+                  children: [
+                    Text(
+                      "   Dobradinha de Chopp\n   15,00 \n\n   Adicionar ao carrinho        ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    right: -4,
-                    top: 10,
-                    bottom: -45,
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
+                    Positioned(
+                      right: -4,
+                      top: 10,
+                      bottom: -45,
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+                width: 350,
+                height: 90,
+                decoration: BoxDecoration(
+                    color: Color(0xFF00265F),
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        alignment: Alignment(1, 0),
+                        image: AssetImage("assets/images/card5.png"),
+                        fit: BoxFit.fitHeight)),
               ),
-              width: 350,
-              height: 90,
-              decoration: BoxDecoration(
-                  color: Color(0xFF00265F),
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      alignment: Alignment(1, 0),
-                      image: AssetImage("assets/images/card5.png"),
-                      fit: BoxFit.fitHeight)),
             ),
-            SizedBox(height: 15),
-            Container(
-              alignment: Alignment(-1, 0),
-              child: Stack(
-                children: [
-                  Text(
-                    "   Dobradinha de Chopp\n   15,00 \n\n   Adicionar ao carrinho        ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w300,
+            SizedBox(height: 10),
+            InkWell(
+              onTap: () {
+                // Navegação para a outra página
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => VisualizandoBebida()),
+                );
+              },
+              child: Container(
+                alignment: Alignment(-1, 0),
+                child: Stack(
+                  children: [
+                    Text(
+                      "   Dobradinha de Chopp\n   15,00 \n\n   Adicionar ao carrinho        ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    right: -4,
-                    top: 10,
-                    bottom: -45,
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
+                    Positioned(
+                      right: -4,
+                      top: 10,
+                      bottom: -45,
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+                width: 350,
+                height: 90,
+                decoration: BoxDecoration(
+                    color: Color(0xFF00265F),
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        alignment: Alignment(1, 0),
+                        image: AssetImage("assets/images/card5.png"),
+                        fit: BoxFit.fitHeight)),
               ),
-              width: 350,
-              height: 90,
-              decoration: BoxDecoration(
-                  color: Color(0xFF00265F),
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      alignment: Alignment(1, 0),
-                      image: AssetImage("assets/images/card5.png"),
-                      fit: BoxFit.fitHeight)),
             ),
           ],
         ),

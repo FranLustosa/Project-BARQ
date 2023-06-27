@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_login/BebidasAlcoolicas.dart';
 import 'package:flutter_application_login/VisualizandoBebida.dart';
 
 import 'CarrinhoDeCompras.dart';
@@ -32,7 +31,10 @@ class _PetiscosState extends State<Petiscos> {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => CarrinhoDeCompras()),
+                MaterialPageRoute(
+                    builder: (context) => CarrinhoDeCompras(
+                          itens: [],
+                        )),
               );
             },
           ),
@@ -90,7 +92,7 @@ class PetiscosListView extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            "RS 30,00",
+                            "R\$ 30,00",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,

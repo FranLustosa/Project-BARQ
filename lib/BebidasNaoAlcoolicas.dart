@@ -2,10 +2,7 @@
 // --- INTERLIGADA A PÁGINA DE BEBIDA ALCOOLICAS, OU SEJA, ELA É CHAMADA NESSA CLASSE E REALIZA O RETORNO --- //
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_login/BebidasAlcoolicas.dart';
-import 'package:flutter_application_login/VisualizandoBebida.dart';
 import 'package:flutter_application_login/VisualizandoBebidaNaoAlcoolica.dart';
-
 import 'CarrinhoDeCompras.dart';
 import 'MyBottomNavigationBar.dart';
 
@@ -36,7 +33,10 @@ class _PetiscosState extends State<BebidasNaoAlcoolicas> {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => CarrinhoDeCompras()),
+                MaterialPageRoute(
+                    builder: (context) => CarrinhoDeCompras(
+                          itens: [],
+                        )),
               );
             },
           ),
@@ -94,7 +94,7 @@ class BebidasNaoAlcoolicasListView extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            "RS 10,00",
+                            "R\$ 10,00",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,

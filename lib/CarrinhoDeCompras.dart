@@ -2,16 +2,25 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
+import 'MyBottomNavigationBar.dart';
 
 class CarrinhoDeCompras extends StatefulWidget {
-  const CarrinhoDeCompras({super.key});
+  const CarrinhoDeCompras({super.key, required List<String> itens});
 
   @override
   State<CarrinhoDeCompras> createState() => _MyWidgetState();
 }
 
 class _MyWidgetState extends State<CarrinhoDeCompras> {
+  int _currentIndex = 0;
+
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +28,10 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
         backgroundColor: Color(0xFF00265F),
         centerTitle: true,
         title: Text("BARQ"),
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTap,
       ),
       body: Container(
         width: 430,
@@ -45,7 +58,7 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             //card
             Positioned(
               left: 14,
-              top: 70,
+              top: 60,
               child: Container(
                 width: 350,
                 height: 200,
@@ -59,7 +72,7 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 35,
-              top: -230,
+              top: -270,
               child: SizedBox(
                 width: 233,
                 child: Text(
@@ -77,7 +90,7 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 64,
-              top: -100,
+              top: -120,
               child: SizedBox(
                 width: 63,
                 child: Text(
@@ -95,7 +108,7 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 35,
-              top: 160,
+              top: 120,
               child: Container(
                 width: 132,
                 height: 24,
@@ -109,14 +122,14 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 46,
-              top: 150,
+              top: -300,
               child: SizedBox(
                 width: 106,
                 height: 14,
                 child: Text(
                   'Total R\$ 10,00',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 226, 117, 117),
                     fontSize: 15,
                     fontStyle: FontStyle.italic,
                     fontFamily: 'Inter',
@@ -139,7 +152,7 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
             ),
             Positioned(
               left: 268,
-              top: 100,
+              top: 60,
               child: Container(
                 width: 117,
                 height: 100,
