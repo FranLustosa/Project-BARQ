@@ -16,6 +16,7 @@ class VisualizandoBebida extends StatefulWidget {
 class _VisualizandoBebidaState extends State<VisualizandoBebida> {
   int _currentIndex = 0;
   int _quantity = 0; // Variável para controlar a quantidade
+
   void _onTap(int index) {
     setState(() {
       _currentIndex = index;
@@ -115,74 +116,79 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                         ),
                       ),
                       SizedBox(height: 16),
-                      SizedBox(
-                        width: 300,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  actionsOverflowAlignment:
-                                      OverflowBarAlignment.center,
-                                  title: Text(
-                                      'Adicionado ao carrinho com sucesso!'),
-                                  actions: [
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Text('Continuar Pedindo'),
-                                      style: ElevatedButton.styleFrom(
-                                        fixedSize: Size(250, 40),
-                                        backgroundColor: Color(0xFF00265F),
-                                        primary: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                      Padding(
+                        padding: EdgeInsets.only(top: 16),
+                        child: SizedBox(
+                          width: 400,
+                          height:
+                              62, // Aumente a altura do botão conforme necessário
+                          child: ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    actionsOverflowAlignment:
+                                        OverflowBarAlignment.center,
+                                    title: Text(
+                                        'Adicionado ao carrinho com sucesso!'),
+                                    actions: [
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('Continuar Pedindo'),
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: Size(250, 40),
+                                          backgroundColor: Color(0xFF00265F),
+                                          primary: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(height: 16),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(
+                                      SizedBox(height: 16),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    CarrinhoDeCompras(
-                                                      itens: [],
-                                                    )));
-                                      },
-                                      child: Text('Ver carrinho'),
-                                      style: ElevatedButton.styleFrom(
-                                        fixedSize: Size(250, 40),
-                                        backgroundColor:
-                                            Color.fromARGB(255, 85, 85, 85),
-                                        primary:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                                              builder: (context) =>
+                                                  CarrinhoDeCompras(
+                                                itens: [],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Text('Ver carrinho'),
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: Size(250, 40),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 85, 85, 85),
+                                          primary: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          // modificando o buttom
-
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: Size(370, 62),
-                            backgroundColor: Color(0xFF00265F),
-                            primary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(
+                                  300, 62), // Atualize o tamanho do botão aqui
+                              backgroundColor: Color(0xFF00265F),
+                              primary: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
                             ),
+                            child: Text('Adicionar ao carrinho'),
                           ),
-                          child: Text('Adicionar ao carrinho'),
                         ),
                       ),
                     ],
