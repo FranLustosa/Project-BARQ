@@ -31,15 +31,7 @@ class _PetiscosState extends State<BebidasAlcoolicas> {
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.of(context).push(
-                // ignore: prefer_const_constructors
-                MaterialPageRoute(
-                    builder: (context) => CarrinhoDeCompras(
-                          itens: [],
-                        )),
-              );
-            },
+            onPressed: () {},
           ),
         ],
       ),

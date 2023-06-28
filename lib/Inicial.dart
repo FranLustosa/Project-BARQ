@@ -37,12 +37,7 @@ class _MyStatefulWidgetState extends State<Inicial> {
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CarrinhoDeCompras(
-                        itens: [],
-                      )));
-            },
+            onPressed: () {},
           ),
         ],
       ),

@@ -1,18 +1,11 @@
-// --- PÁGINA DOS MEUS BOTÕES DE NAVEGAÇÃO INFERIOR, É CHAMADO PELA AS OUTRAS CLASSES --- //
-// --- INTERLIGADA A TODAS AS PÁGINAS QUE É CHAMADO --- //
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'CarrinhoDeCompras.dart';
-import 'MyBottomNavigationBar.dart';
 
 class ItemCarrinho {
   String nome;
   double preco;
   int quantidade;
 
-  ItemCarrinho(
-      {required this.nome, required this.preco, required this.quantidade});
+  ItemCarrinho({required this.nome, required this.preco, required this.quantidade});
 }
 
 class VisualizandoBebida extends StatefulWidget {
@@ -137,7 +130,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                         child: SizedBox(
                           width: 400,
                           height:
-                              62, // Aumente a altura do botão conforme necessário
+                          62, // Aumente a altura do botão conforme necessário
                           child: ElevatedButton(
                             onPressed: () {
                               showDialog(
@@ -145,9 +138,8 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                                 builder: (BuildContext context) {
                                   return AlertDialog(
                                     actionsOverflowAlignment:
-                                        OverflowBarAlignment.center,
-                                    title: Text(
-                                        'Adicionado ao carrinho com sucesso!'),
+                                    OverflowBarAlignment.center,
+                                    title: Text('Adicionado ao carrinho com sucesso!'),
                                     actions: [
                                       ElevatedButton(
                                         onPressed: () {
@@ -160,7 +152,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                                           primary: Colors.white,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                            BorderRadius.circular(15),
                                           ),
                                         ),
                                       ),
@@ -170,8 +162,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                                           Navigator.of(context).push(
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  CarrinhoDeCompras(
-                                                      itens: carrinho),
+                                                  CarrinhoDeCompras(itens: carrinho),
                                             ),
                                           );
                                         },
@@ -179,12 +170,12 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
                                         style: ElevatedButton.styleFrom(
                                           fixedSize: Size(250, 40),
                                           backgroundColor:
-                                              Color.fromARGB(255, 85, 85, 85),
+                                          Color.fromARGB(255, 85, 85, 85),
                                           primary: Color.fromARGB(
                                               255, 255, 255, 255),
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                            BorderRadius.circular(15),
                                           ),
                                         ),
                                       ),
@@ -315,45 +306,10 @@ class _VisualizandoBebidaState extends State<VisualizandoBebida> {
   }
 }
 
-class CarrinhoDeCompras extends StatefulWidget {
+class CarrinhoDeCompras extends StatelessWidget {
   final List<ItemCarrinho> itens;
 
   const CarrinhoDeCompras({Key? key, required this.itens}) : super(key: key);
-
-  @override
-  _CarrinhoDeComprasState createState() => _CarrinhoDeComprasState();
-}
-
-class _CarrinhoDeComprasState extends State<CarrinhoDeCompras> {
-  void _removerItem(int index) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Confirmar exclusão'),
-          content:
-              Text('Tem certeza de que deseja excluir este item do carrinho?'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Cancelar'),
-            ),
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  widget.itens.removeAt(index);
-                });
-                Navigator.of(context).pop();
-              },
-              child: Text('Excluir'),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -362,27 +318,53 @@ class _CarrinhoDeComprasState extends State<CarrinhoDeCompras> {
         title: Text('Carrinho de Compras'),
       ),
       body: ListView.builder(
-        itemCount: widget.itens.length,
+        itemCount: itens.length,
         itemBuilder: (context, index) {
-          final item = widget.itens[index];
+          final item = itens[index];
           return ListTile(
             title: Text(item.nome),
             subtitle: Text('Quantidade: ${item.quantidade}'),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('R\$ ${item.preco * item.quantidade}'),
-                IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () {
-                    _removerItem(index);
-                  },
-                ),
-              ],
-            ),
+            trailing: Text('R\$ ${item.preco * item.quantidade}'),
           );
         },
       ),
+    );
+  }
+}
+
+class MyBottomNavigationBar extends StatelessWidget {
+  final int currentIndex;
+  final Function(int) onTap;
+
+  const MyBottomNavigationBar({
+    Key? key,
+    required this.currentIndex,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      currentIndex: currentIndex,
+      onTap: onTap,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          label: 'Search',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: 'Favorites',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
     );
   }
 }
