@@ -1,8 +1,15 @@
 // --- PÁGINA DOS MEUS BOTÕES DE NAVEGAÇÃO INFERIOR, É CHAMADO PELA AS OUTRAS CLASSES --- //
 // --- INTERLIGADA A TODAS AS PÁGINAS QUE É CHAMADO --- //
 
+// --- PÁGINA DOS MEUS BOTÕES DE NAVEGAÇÃO INFERIOR, É CHAMADO PELA AS OUTRAS CLASSES --- //
+// --- INTERLIGADA A TODAS AS PÁGINAS QUE É CHAMADO --- //
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_login/AdicionadoAoCarrinho.dart';
+import 'package:flutter_application_login/BebidasAlcoolicas.dart';
+import 'package:flutter_application_login/Inicial.dart';
 import 'package:flutter_application_login/Login.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/rendering.dart';
 
 class MyBottomNavigationBar extends StatelessWidget {
@@ -17,7 +24,10 @@ class MyBottomNavigationBar extends StatelessWidget {
       currentIndex: currentIndex,
       onTap: (index) {
         if (index == 0) {
-          // Navegar para a página principal apenas quando for clicado
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => Inicial()),
+          );
           onTap(index);
         } else if (index == 1) {
           showDialog(
@@ -52,7 +62,7 @@ class MyBottomNavigationBar extends StatelessWidget {
       },
       backgroundColor: Color(0xFF00265F),
       unselectedItemColor: Colors.white,
-      selectedItemColor: Colors.blueAccent,
+      selectedItemColor: Colors.white,
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),

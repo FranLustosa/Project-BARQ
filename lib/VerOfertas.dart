@@ -49,11 +49,11 @@ class _MyStatefulWidgetState extends State<VerOfertas> {
           children: [
             SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(3.0),
               child: Align(
                 alignment: Alignment(-0.9, 0),
                 child: Text(
-                  "Ofertas do Dia",
+                  "  Ofertas do Dia",
                   style: TextStyle(
                     color: Color(0xFF00265F),
                     fontSize: 15,
@@ -88,7 +88,7 @@ class _MyStatefulWidgetState extends State<VerOfertas> {
                       style: TextStyle(
                         color: Color(0xFF00265F),
                         fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
@@ -193,7 +193,7 @@ class _MyStatefulWidgetState extends State<VerOfertas> {
                       style: TextStyle(
                         color: Color(0xFF00265F),
                         fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),

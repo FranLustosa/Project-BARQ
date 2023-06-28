@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'CarrinhoDeCompras.dart';
+import 'MyBottomNavigationBar.dart';
 
 class VisualizandoBebidaNaoAlcoolica extends StatefulWidget {
   const VisualizandoBebidaNaoAlcoolica({Key? key}) : super(key: key);
@@ -16,6 +17,12 @@ class VisualizandoBebidaNaoAlcoolica extends StatefulWidget {
 class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
   int _currentIndex = 0;
   int _quantity = 0; // Variável para controlar a quantidade
+
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +37,10 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
             onPressed: () {},
           ),
         ],
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTap,
       ),
       body: Stack(
         children: [
@@ -54,9 +65,8 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
                     ),
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Stack(),
                       Positioned(
                         top: 300,
                         left: 0,
@@ -71,7 +81,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
                                 BoxShadow(
                                   color: Color(0x3f000000),
                                   offset: Offset(0, 4),
-                                  blurRadius: 4,
+                                  blurRadius: 2,
                                 ),
                               ],
                             ),
@@ -107,72 +117,79 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
                         ),
                       ),
                       SizedBox(height: 16),
-                      SizedBox(
-                        width: 300,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  actionsOverflowAlignment:
-                                      OverflowBarAlignment.center,
-                                  title: Text(
-                                      'Adicionado ao carrinho com sucesso!'),
-                                  actions: [
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Text('Continuar Pedindo'),
-                                      style: ElevatedButton.styleFrom(
-                                        fixedSize: Size(250, 40),
-                                        backgroundColor: Color(0xFF00265F),
-                                        primary: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                      Padding(
+                        padding: EdgeInsets.only(top: 16),
+                        child: SizedBox(
+                          width: 400,
+                          height:
+                              62, // Aumente a altura do botão conforme necessário
+                          child: ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    actionsOverflowAlignment:
+                                        OverflowBarAlignment.center,
+                                    title: Text(
+                                        'Adicionado ao carrinho com sucesso!'),
+                                    actions: [
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('Continuar Pedindo'),
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: Size(250, 40),
+                                          backgroundColor: Color(0xFF00265F),
+                                          primary: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(height: 16),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(
+                                      SizedBox(height: 16),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    CarrinhoDeCompras(
-                                                      itens: [],
-                                                    )));
-                                      },
-                                      child: Text('Ver carrinho'),
-                                      style: ElevatedButton.styleFrom(
-                                        fixedSize: Size(250, 40),
-                                        backgroundColor:
-                                            Color.fromARGB(255, 85, 85, 85),
-                                        primary:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                                              builder: (context) =>
+                                                  CarrinhoDeCompras(
+                                                itens: [],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Text('Ver carrinho'),
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: Size(250, 40),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 85, 85, 85),
+                                          primary: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: Size(370, 62),
-                            backgroundColor: Color(0xFF00265F),
-                            primary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(
+                                  400, 62), // Atualize o tamanho do botão aqui
+                              backgroundColor: Color(0xFF00265F),
+                              primary: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
                             ),
+                            child: Text('Adicionar ao carrinho'),
                           ),
-                          child: Text('Adicionar ao carrinho'),
                         ),
                       ),
                     ],
@@ -197,15 +214,15 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
           ),
           Positioned(
             left: 37,
-            top: 320,
+            top: 370,
             child: Align(
               child: SizedBox(
                 width: 222,
                 height: 32,
                 child: Text(
-                  'Drink de Morango',
+                  'Cerveja Heineken 600ml',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                     height: 1.5599022865,
                     letterSpacing: -0.6,
@@ -217,7 +234,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
           ),
           Positioned(
             left: 37,
-            top: 350,
+            top: 410,
             child: Align(
               child: SizedBox(
                 width: 328,
@@ -237,7 +254,7 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
           ),
           Positioned(
             left: 250,
-            top: 320,
+            top: 370,
             child: Align(
               child: SizedBox(
                 width: 92,
@@ -246,6 +263,26 @@ class _VisualizandoBebidaState extends State<VisualizandoBebidaNaoAlcoolica> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Color(0xb200255e),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 250,
+            top: 370,
+            child: Align(
+              child: SizedBox(
+                width: 92,
+                height: 26,
+                child: Text(
+                  '     R\u0024 10,00',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    height: 1.5599023183,
+                    letterSpacing: -0.45,
+                    color: Colors.white,
                   ),
                 ),
               ),

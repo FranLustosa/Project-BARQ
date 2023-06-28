@@ -63,7 +63,7 @@ class BebidasAlcoolicasListView extends StatelessWidget {
           child: Text(
             "     Bebidas Alcoólicas ",
             style: TextStyle(
-                fontSize: 18,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF00265F)),
           ),
@@ -93,8 +93,8 @@ class BebidasAlcoolicasListView extends StatelessWidget {
                             "   Cerveja Spaten 350ml\n   \n\n",
                             style: TextStyle(
                               color: Color(0xFF00265F),
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                           Positioned(
@@ -109,7 +109,7 @@ class BebidasAlcoolicasListView extends StatelessWidget {
                               ),
                               child: Center(
                                 child: Text(
-                                  "RS 10,00",
+                                  "R\$ 10,00",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,

@@ -76,8 +76,8 @@ class PetiscosListView extends StatelessWidget {
                       "   Bandeja de pestiscos\n   \n\n",
                       style: TextStyle(
                         color: Color(0xFF00265F),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Positioned(

@@ -78,8 +78,8 @@ class BebidasNaoAlcoolicasListView extends StatelessWidget {
                       "   Drink de Morango\n   \n\n",
                       style: TextStyle(
                         color: Color(0xFF00265F),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Positioned(

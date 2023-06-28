@@ -42,12 +42,12 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
           children: [
             Positioned(
               left: 30,
-              top: -410,
+              top: -330,
               child: Text(
                 'Meu carrinho de pedidos',
                 style: TextStyle(
                   color: Color(0xFF00255E),
-                  fontSize: 18,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold,
                   height: 31.20,
                   letterSpacing: -0.60,
@@ -71,12 +71,36 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
               ),
             ),
             Positioned(
+              left: 40,
+              top: 120,
+              child: Container(
+                width: 132,
+                height: 24,
+                decoration: ShapeDecoration(
+                  color: Color(0xB200255E),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'R\$ 10,00', // Texto a ser adicionado
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
               left: 35,
               top: -270,
               child: SizedBox(
                 width: 233,
                 child: Text(
-                  '2X Cerveja Spaten 350ml',
+                  '  2X Cerveja Spaten 350ml',
                   style: TextStyle(
                     color: Color(0xFF00255E),
                     fontSize: 15,
@@ -89,57 +113,33 @@ class _MyWidgetState extends State<CarrinhoDeCompras> {
               ),
             ),
             Positioned(
-              left: 64,
-              top: -120,
-              child: SizedBox(
-                width: 63,
-                child: Text(
-                  'Excluir',
-                  style: TextStyle(
-                    color: Color(0xFF4F4F4F),
-                    fontSize: 15,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
-                    height: 28.08,
-                    letterSpacing: -0.54,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
               left: 35,
-              top: 120,
-              child: Container(
-                width: 132,
-                height: 24,
-                decoration: ShapeDecoration(
-                  color: Color(0xB200255E),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 46,
-              top: -300,
+              top: 200,
               child: SizedBox(
-                width: 106,
-                height: 14,
-                child: Text(
-                  'Total R\$ 10,00',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 226, 117, 117),
-                    fontSize: 15,
-                    fontStyle: FontStyle.italic,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
-                    height: 24.96,
-                    letterSpacing: -0.48,
+                width: 132,
+                height: 30,
+                child: TextButton(
+                  onPressed: () {
+                    // Lógica de exclusão do item
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color(0xB200255E),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    'Excluir',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
             ),
+
             Positioned(
               left: 40,
               top: 357,
