@@ -2,7 +2,7 @@
 // --- INTERLIGADA A PÁGINA DE OFERTAS LIST VIEW --- //
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_login/CarrinhoDeCompras.dart';
+import 'package:flutter_application_login/VisualizandoBebida.dart';
 
 import 'MyBottomNavigationBar.dart';
 

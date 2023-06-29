@@ -2,8 +2,6 @@
 // --- INTERLIGADA A PÁGINA DE BEBIDA LIST VIEW --- //
 import 'package:flutter/material.dart';
 import 'package:flutter_application_login/VisualizandoBebida.dart';
-
-import 'CarrinhoDeCompras.dart';
 import 'MyBottomNavigationBar.dart';
 
 class BebidasAlcoolicas extends StatefulWidget {

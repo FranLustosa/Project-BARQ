@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'CarrinhoDeCompras.dart';
+import 'package:flutter_application_login/VisualizandoBebida.dart';
+
+import 'MyBottomNavigationBar.dart';
+
+class ItemCarrinho {
+  String nome;
+  double preco;
+  int quantidade;
+
+  ItemCarrinho(
+      {required this.nome, required this.preco, required this.quantidade});
+}
 
 class VisualizandoMaisPedidos extends StatefulWidget {
   const VisualizandoMaisPedidos({Key? key}) : super(key: key);
@@ -12,6 +23,13 @@ class VisualizandoMaisPedidos extends StatefulWidget {
 class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
   int _currentIndex = 0;
   int _quantity = 0; // Variável para controlar a quantidade
+  List<ItemCarrinho> carrinho = [];
+
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +41,19 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CarrinhoDeCompras(itens: carrinho),
+                ),
+              );
+            },
           ),
         ],
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTap,
       ),
       body: Stack(
         children: [
@@ -40,7 +68,7 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
               children: [
                 SizedBox(height: 300),
                 Container(
-                  width: 400,
+                  width: 500,
                   height: 347,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -50,7 +78,7 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
                     ),
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Positioned(
                         top: 300,
@@ -72,7 +100,7 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
                             ),
                             // CÓDIGO INCREMENTADOR
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 IconButton(
                                   icon: Icon(Icons.remove),
@@ -102,74 +130,89 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
                         ),
                       ),
                       SizedBox(height: 16),
-                      SizedBox(
-                        width: 300,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  actionsOverflowAlignment:
-                                      OverflowBarAlignment.center,
-                                  title: Text(
-                                      'Adicionado ao carrinho com sucesso!'),
-                                  actions: [
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Text('Continuar Pedindo'),
-                                      style: ElevatedButton.styleFrom(
-                                        fixedSize: Size(250, 40),
-                                        backgroundColor: Color(0xFF00265F),
-                                        primary: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                      Padding(
+                        padding: EdgeInsets.only(top: 16),
+                        child: SizedBox(
+                          width: 350,
+                          height:
+                              50, // Aumente a altura do botão conforme necessário
+                          child: ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    actionsOverflowAlignment:
+                                        OverflowBarAlignment.center,
+                                    title: Text(
+                                        'Adicionado ao carrinho com sucesso!'),
+                                    actions: [
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('Continuar Pedindo'),
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: Size(250, 40),
+                                          backgroundColor: Color(0xFF00265F),
+                                          primary: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(height: 16),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(
+                                      SizedBox(height: 16),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    CarrinhoDeCompras(
-                                                      itens: [],
-                                                    )));
-                                      },
-                                      child: Text('Ver carrinho'),
-                                      style: ElevatedButton.styleFrom(
-                                        fixedSize: Size(250, 40),
-                                        backgroundColor:
-                                            Color.fromARGB(255, 85, 85, 85),
-                                        primary:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                                              builder: (context) =>
+                                                  CarrinhoDeCompras(
+                                                      itens: carrinho),
+                                            ),
+                                          );
+                                        },
+                                        child: Text('Ver carrinho'),
+                                        style: ElevatedButton.styleFrom(
+                                          fixedSize: Size(250, 40),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 85, 85, 85),
+                                          primary: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: Size(370, 62),
-                            backgroundColor: Color(0xFF00265F),
-                            primary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                                    ],
+                                  );
+                                },
+                              );
+
+                              // Adicionar o item ao carrinho
+                              carrinho.add(ItemCarrinho(
+                                nome: 'Batata frita 500g',
+                                preco: 30.00,
+                                quantidade: _quantity,
+                              ));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: Size(
+                                  300, 62), // Atualize o tamanho do botão aqui
+                              backgroundColor: Color(0xFF00265F),
+                              primary: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
                             ),
+                            child: Text('Adicionar ao carrinho'),
                           ),
-                          child: Text('Adicionar ao carrinho'),
                         ),
                       ),
+                      SizedBox(height: 16),
+                      // Espaço entre o botão e o BottomNavigationBar
                     ],
                   ),
                 ),
@@ -184,7 +227,7 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
                 width: 300,
                 height: 300,
                 child: Image.asset(
-                  'assets/images/bebida.png',
+                  'assets/images/card16.png',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -192,15 +235,15 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
           ),
           Positioned(
             left: 37,
-            top: 320,
+            top: 370,
             child: Align(
               child: SizedBox(
                 width: 222,
                 height: 32,
                 child: Text(
-                  'Cerveja Heineken 600ml',
+                  'Batata frita 500g',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                     height: 1.5599022865,
                     letterSpacing: -0.6,
@@ -212,7 +255,7 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
           ),
           Positioned(
             left: 37,
-            top: 350,
+            top: 410,
             child: Align(
               child: SizedBox(
                 width: 328,
@@ -232,7 +275,7 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
           ),
           Positioned(
             left: 250,
-            top: 320,
+            top: 370,
             child: Align(
               child: SizedBox(
                 width: 92,
@@ -246,8 +289,356 @@ class _VisualizandoBebidaState extends State<VisualizandoMaisPedidos> {
               ),
             ),
           ),
+          Positioned(
+            left: 250,
+            top: 370,
+            child: Align(
+              child: SizedBox(
+                width: 92,
+                height: 26,
+                child: Text(
+                  '     R\$ 30,00',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    height: 1.5599023183,
+                    letterSpacing: -0.45,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
+  }
+}
+
+class CarrinhoDeCompras extends StatefulWidget {
+  final List<ItemCarrinho> itens;
+
+  const CarrinhoDeCompras({Key? key, required this.itens}) : super(key: key);
+
+  @override
+  _CarrinhoDeComprasState createState() => _CarrinhoDeComprasState();
+}
+
+class _CarrinhoDeComprasState extends State<CarrinhoDeCompras> {
+  bool _confirmarPedido = false;
+  bool _cancelarPedido = false;
+  // bottom navigation
+  int _currentIndex = 0;
+
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  void _removerItem(int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirmar exclusão'),
+          content:
+              Text('Tem certeza de que deseja excluir este item do carrinho?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Cancelar',
+                style: TextStyle(
+                  color: Color(0xFF00265F),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  widget.itens.removeAt(index);
+                });
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Excluir',
+                style: TextStyle(
+                  color: Color(0xFF00265F),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _confirmarPedidoDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        if (widget.itens.isEmpty) {
+          return AlertDialog(
+            title: Text('Carrinho Vazio'),
+            content: Text(
+                'Não há itens no carrinho para cancelar o pedido. Por favor, adicione itens ao seu carrinho e realize o pedido.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Fechar',
+                  style: TextStyle(
+                    color: Color(0xFF00265F),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+
+        return AlertDialog(
+          title: Text('Confirmar Pedido'),
+          content: Text('Deseja confirmar o pedido?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  _confirmarPedido = false;
+                  widget.itens.clear();
+                });
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Pedido confirmado'),
+                      content: Text('O pedido foi confirmado com sucesso!'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'Fechar',
+                            style: TextStyle(
+                              color: Color(0xFF00265F),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Text(
+                'Confirmar',
+                style: TextStyle(
+                  color: Color(0xFF00265F),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Cancelar',
+                style: TextStyle(
+                  color: Color(0xFF00265F),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _cancelarPedidoDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        if (widget.itens.isEmpty) {
+          return AlertDialog(
+            title: Text('Carrinho Vazio'),
+            content: Text(
+                'Não há itens no carrinho para cancelar o pedido. Por favor, adicione itens ao seu carrinho e realize o pedido.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Fechar',
+                  style: TextStyle(
+                    color: Color(0xFF00265F),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+
+        return AlertDialog(
+          title: Text('Cancelar Pedido'),
+          content: Text('Deseja cancelar o pedido?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  _cancelarPedido = false;
+                  widget.itens.clear();
+                });
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Pedido cancelado'),
+                      content: Text('O pedido foi cancelado!'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'Fechar',
+                            style: TextStyle(
+                              color: Color(0xFF00265F),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Text(
+                'Confirmar',
+                style: TextStyle(
+                  color: Color(0xFF00265F),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Cancelar',
+                style: TextStyle(
+                  color: Color(0xFF00265F),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF00265F),
+        centerTitle: true,
+        title: Text("BARQ"),
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTap,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: widget.itens.length,
+              itemBuilder: (context, index) {
+                final item = widget.itens[index];
+                return ListTile(
+                  title: Text(item.nome),
+                  subtitle: Text('Quantidade: ${item.quantidade}'),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('R\$ ${item.preco * item.quantidade}'),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          _removerItem(index);
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 16),
+          !_confirmarPedido && !_cancelarPedido
+              ? Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF00265F),
+                          fixedSize: Size(350, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        onPressed: () {
+                          _confirmarPedidoDialog();
+                        },
+                        child: Text('Confirmar Pedido'),
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 85, 85, 85),
+                          fixedSize: Size(350, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        onPressed: () {
+                          _cancelarPedidoDialog();
+                        },
+                        child: Text('Cancelar Pedido'),
+                      ),
+                    ],
+                  ),
+                )
+              : SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+}
+
+class CarrinhoDeComprasProvider extends ChangeNotifier {
+  List<ItemCarrinho> itens = [];
+
+  void adicionarItem(ItemCarrinho item) {
+    itens.add(item);
+    notifyListeners();
+  }
+
+  void removerItem(int index) {
+    itens.removeAt(index);
+    notifyListeners();
+  }
+
+  void limparCarrinho() {
+    itens.clear();
+    notifyListeners();
   }
 }
